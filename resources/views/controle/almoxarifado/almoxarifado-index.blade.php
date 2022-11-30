@@ -16,6 +16,7 @@
         <h1 class="font-semibold text-2xl text-slate-700">CONTROLE PARA ALMOXARIFADO</h1>
 
         <a href="/almoxarifado_create"><button class="mt-4 mb-12 w-40 h-12 bg-slate-700 rounded shadow-md hover:scale-90">Novo Item - <i class="bi bi-file-earmark-plus-fill text-xl"></i></button></a>
+        <a href="/almoxarifado_entrada_item"><button class="mt-4 mb-12 w-48 h-12 bg-slate-700 rounded shadow-md hover:scale-90">Entrada de Itens - <i class="bi bi-database-up text-xl"></i></button></a>
 
         <h4 class="text-lg text-slate-700">Informe a saída de itens:</h4>
                 
@@ -28,6 +29,7 @@
                     </div>
                     <div class="w-2/3">
                         <select class="w-full p-2 rounded-lg font-bold text-gray-600" name="setor" id="setor">
+                            <option value=""></option>
                             <option value="Financeiro">Financeiro</option>
                             <option value="Informática">Informática</option>
                             <option value="Jurídico">Jurídico</option>
@@ -54,15 +56,11 @@
                         <label class="font-semibold text-zinc-100" for="">Selecione o Item :</label>
                     </div>
                     <div class="w-2/3">
-                        <select class="w-full p-2 rounded-lg font-bold text-gray-600" name="setor" id="setor">
-                            <option value="Financeiro">Financeiro</option>
-                            <option value="Informática">Informática</option>
-                            <option value="Jurídico">Jurídico</option>
-                            <option value="Licitação">Licitação</option>
-                            <option value="Recrutamento">Recrutamento</option>
-                            <option value="Recepção">Recepção</option>
-                            <option value="RH">RH</option>
-                            <option value="Supervisão">Supervisão</option>
+                        <select class="w-full p-2 rounded-lg font-bold text-gray-600" name="item" id="item">
+                            <option value=""></option>
+                        @foreach ( $itens as $item )
+                            <option value="{{$item->id}}">{{$item->material}}</option>
+                        @endforeach
                         </select>
                     </div>
                 </div>
@@ -81,6 +79,12 @@
                 </div>
             </form>
         </div>
+
+            @if (session('msg'))
+                <div class="m-12 p-6 rounded-lg bg-green-200 w-full max-w-2xl shadow-lg">
+                    <h1 class="text-black text-center">Registrado com sucesso !!!</h1>
+                </div>
+            @endif
 
         </div>
     </div>

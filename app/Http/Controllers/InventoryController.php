@@ -11,7 +11,9 @@ class InventoryController extends Controller
     
     public function index()
     {
-        return view('controle.almoxarifado.almoxarifado-index');
+        $itens = Inventory::all();
+
+        return view('controle.almoxarifado.almoxarifado-index', compact('itens'));
     }
 
     
@@ -36,18 +38,28 @@ class InventoryController extends Controller
     
     public function store_saida(Request $request)
     {
-        //
+        $item1 = Inventory::find($request->item);
+        $item1->quantidade = $item1->quantidade - $request->quantidade;
+        $item1->save();
+
+
+        
+
+        ExitInventory::create([
+            'material'      =>$item1->material,
+            'setor'         =>$request->setor,
+            'funcionario'   =>$request->funcionario,
+            'quantidade'    =>$request->quantidade
+        ]);
+
+        return redirect('/almoxarifado')->with('msg', 'true');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Inventory  $inventory
-     * @return \Illuminate\Http\Response
-     */
     public function show(Inventory $inventory)
     {
-        //
+        $itens = ExitInventory::all();
+
+        return view('controle.almoxarifado.almoxarifado-consulta-item', compact('itens'));
     }
 
     /**
@@ -58,7 +70,9 @@ class InventoryController extends Controller
      */
     public function edit(Inventory $inventory)
     {
-        //
+        $itens = Inventory::all();
+
+        return view('controle.almoxarifado.almoxarifado-entrada-item', compact('itens'));
     }
 
     /**
@@ -70,7 +84,11 @@ class InventoryController extends Controller
      */
     public function update(Request $request, Inventory $inventory)
     {
-        //
+        $item1 = Inventory::find($request->item);
+        $item1->quantidade = $item1->quantidade + $request->quantidade;
+        $item1->save();
+
+        return redirect('/almoxarifado_entrada_item')->with('msg', 'true');
     }
 
     /**

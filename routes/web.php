@@ -68,11 +68,14 @@ Route::get('/patrimonial/order/{id}', [AssetControlController::class, 'order']);
 Route::get('/almoxarifado', [InventoryController::class, 'index']);
 Route::get('/almoxarifado_create', [InventoryController::class, 'create']);
 Route::post('/almoxarifado_store_novo_item', [InventoryController::class, 'store_novo_item']);
+Route::get('/almoxarifado_entrada_item', [InventoryController::class, 'edit']);
+Route::post('/almoxarifado_store_entrada_item', [InventoryController::class, 'update']);
 Route::post('/almoxarifado_store_saida', [InventoryController::class, 'store_saida']);
+Route::get('/almoxarifado_consulta', [InventoryController::class, 'show']);
 
-Route::get('/almoxarifado', function() {
-    return view('controle.almoxarifado.almoxarifado-index');
-});
+// Route::get('/almoxarifado', function() {
+//     return view('controle.almoxarifado.almoxarifado-index');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
