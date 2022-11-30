@@ -62,12 +62,7 @@ class InventoryController extends Controller
         return view('controle.almoxarifado.almoxarifado-consulta-item', compact('itens'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Inventory  $inventory
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Inventory $inventory)
     {
         $itens = Inventory::all();
@@ -75,13 +70,7 @@ class InventoryController extends Controller
         return view('controle.almoxarifado.almoxarifado-entrada-item', compact('itens'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Inventory  $inventory
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Inventory $inventory)
     {
         $item1 = Inventory::find($request->item);
@@ -91,12 +80,52 @@ class InventoryController extends Controller
         return redirect('/almoxarifado_entrada_item')->with('msg', 'true');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Inventory  $inventory
-     * @return \Illuminate\Http\Response
-     */
+
+    public function busca(Request $request)
+    {
+        $itens  = ExitInventory::all();
+        $itens2 = Inventory::all();
+        return view('controle.almoxarifado.almoxarifado-busca', compact('itens', 'itens2'));
+    }
+
+    public function busca_show(Request $request)
+    {
+        //dd($request);
+
+        $filtro = ExitInventory::query()->orderBy('created_at', 'asc');
+
+        $busca = $request->only('material', 'setor', 'funcionario');
+        $data_inicio = $request->data_ini;
+        $data_fim = $request->data_fim;
+
+        if ($data_inicio && $data_fim) {
+            foreach ($busca as $nome => $valor) {
+                if($valor)  {
+                    $filtro->where($nome, 'LIKE', '%' . $valor . '%');
+                }
+            }
+            $filtro->whereDate('created_at', '>=', $data_inicio);
+            $filtro->whereDate('created_at', '<=', $data_fim);
+        } else {
+            foreach ($busca as $nome => $valor) {
+                if($valor)  {
+                    $filtro->where($nome, 'LIKE', '%' . $valor . '%');
+                }
+            }
+        }
+        
+        $itens = $filtro->paginate();
+        //dd($itens->items());
+
+        if (empty($itens->items())) {
+            return redirect('/almoxarifado_busca')->with('erro', 'Não encontrado');
+        } else {
+            return view('controle.almoxarifado.almoxarifado-busca-show', compact('itens'));
+        }
+        
+    }
+
+
     public function destroy(Inventory $inventory)
     {
         //

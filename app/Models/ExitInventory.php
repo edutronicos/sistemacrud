@@ -9,5 +9,5 @@ class ExitInventory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['material', 'setor', 'funcionario', 'quantidade'];
+    protected $fillable = ['material', 'setor', 'funcionario', 'quantidade', 'items'];
 }

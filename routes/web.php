@@ -72,6 +72,8 @@ Route::get('/almoxarifado_entrada_item', [InventoryController::class, 'edit']);
 Route::post('/almoxarifado_store_entrada_item', [InventoryController::class, 'update']);
 Route::post('/almoxarifado_store_saida', [InventoryController::class, 'store_saida']);
 Route::get('/almoxarifado_consulta', [InventoryController::class, 'show']);
+Route::get('/almoxarifado_busca', [InventoryController::class, 'busca']);
+Route::get('/almoxarifado_busca_show', [InventoryController::class, 'busca_show']);
 
 // Route::get('/almoxarifado', function() {
 //     return view('controle.almoxarifado.almoxarifado-index');

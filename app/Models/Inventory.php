@@ -9,5 +9,5 @@ class Inventory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['material', 'quantidade'];
+    protected $fillable = ['material', 'quantidade', 'items'];
 }

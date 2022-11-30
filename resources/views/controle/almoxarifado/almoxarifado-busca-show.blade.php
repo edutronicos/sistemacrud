@@ -12,18 +12,6 @@
     <!-- Conteúdo Página-->
     <div class=" w-full bg-gray-300 text-white">
         <div class="m-12">
-            <div class="flex flex-row justify-between">
-                <div class="flex row">
-                    <a href="/almoxarifado_busca"><button class="w-48 h-12 bg-slate-700 rounded shadow-md hover:scale-90">Pesquisa Avançada - <i class="bi bi-binoculars text-xl"></i></button></a>
-                </div>
-
-                <form action="/funcionarios_index" method="get">
-                    <div class="flex row">
-                        <input class="w-72 rounded-l-lg shadow-lg text-black font-semibold border-gray-100 focus:outline-none focus:ring focus:ring-violet-300" type="text" name="search" id="search" placeholder="Pesquisa">
-                        <button class="bg-gray-400 rounded-r-lg p-3 shadow-xl hover:shadow-slate-200 focus:shadow-none" type="submit"><i class="bi bi-search"></i></button>
-                    </div>
-                </form>
-            </div>
 
             <div class="flex justify-center mt-24">
                 <table class="table-auto bg-white text-black shadow-lg rounded">
@@ -52,6 +40,7 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
     <!-- Conteúdo Página-->
