@@ -44,7 +44,7 @@
             </div>
 
             @if (session('msg'))
-                <div class="m-12 p-6 rounded-lg bg-green-200 w-full max-w-2xl shadow-lg">
+                <div class="mt-12 p-6 rounded-lg bg-green-200 w-full max-w-2xl shadow-lg">
             <h1 class="text-black text-center">Item cadastrado com sucesso !!!</h1>
             </div>
             @endif

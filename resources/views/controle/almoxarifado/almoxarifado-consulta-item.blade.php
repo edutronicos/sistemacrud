@@ -27,7 +27,7 @@
 
             <div class="flex justify-center mt-24">
                 <table class="table-auto bg-white text-black shadow-lg rounded">
-                    <thead class="">
+                    <thead class="text-xs">
                         <tr class="text-left">
                         <th class="px-5 py-2">Setor</th>
                         <th class="px-5 py-2">Funcionario</th>
@@ -37,7 +37,7 @@
                         {{-- <th class="px-5 py-2">Ações</th> --}}
                         </tr>
                     </thead>
-                    <tbody class="align-top text-sm">
+                    <tbody class="align-top text-xs">
                         @foreach ($itens as $item )
                             <tr>
                                 <td class="px-5 py-2 border-t">{{$item->setor}}</td>

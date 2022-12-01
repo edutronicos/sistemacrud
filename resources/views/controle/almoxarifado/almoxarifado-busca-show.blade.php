@@ -41,6 +41,10 @@
                 </table>
             </div>
 
+            <div class="mt-12 flex justify-center">
+                <a href="/almoxarifado_busca"><button class="w-48 h-12 bg-slate-700 rounded shadow-md hover:scale-90">Nova Pesquisa - <i class="bi bi-binoculars text-xl"></i></button></a>
+            </div>
+
         </div>
     </div>
     <!-- Conteúdo Página-->

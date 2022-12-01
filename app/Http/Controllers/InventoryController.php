@@ -57,7 +57,7 @@ class InventoryController extends Controller
 
     public function show(Inventory $inventory)
     {
-        $itens = ExitInventory::all();
+        $itens = ExitInventory::orderBy('created_at', 'desc')->get();
 
         return view('controle.almoxarifado.almoxarifado-consulta-item', compact('itens'));
     }
