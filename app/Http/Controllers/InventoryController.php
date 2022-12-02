@@ -125,6 +125,13 @@ class InventoryController extends Controller
         
     }
 
+    public function papeis()
+    {
+        $saida = ExitInventory::where('material', '=' , 'RESMA PAPEL A4')->get();
+
+        dd($saida);
+    }
+
 
     public function destroy(Inventory $inventory)
     {
