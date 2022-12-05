@@ -125,11 +125,22 @@ class InventoryController extends Controller
         
     }
 
-    public function papeis()
+    public function papeis(Request $request)
     {
+        $setor = $request->setor;
         $saida = ExitInventory::where('material', '=' , 'RESMA PAPEL A4')->get();
+        $estoque = Inventory::where('material', '=', 'RESMA PAPEL A4')->get();
+        $total = 0;
 
-        dd($saida);
+        foreach ($saida as $key => $value) {
+            $total += $value->quantidade;
+        }
+
+
+
+        dd($setor);
+
+        return view('controle.almoxarifado.almoxarifado-papeis', compact('saida', 'estoque', 'total'));
     }
 
 

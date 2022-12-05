@@ -23,24 +23,24 @@
             </div>
 
             <div class="flex justify-center mt-24">
-                <table class="table-auto bg-white text-black shadow-lg rounded">
+                <table class="table-auto bg-white text-black shadow-lg rounded text-xs">
                     <thead class="">
                         <tr class="text-left">
-                        <th class="px-5 py-2">Nome</th>
-                        <th class="px-5 py-2">Ramal</th>
-                        <th class="px-5 py-2">Celular</th>
-                        <th class="px-5 py-2">Email</th>
-                        <th class="px-5 py-2">Setor</th>
-                        <th class="px-5 py-2">Ações</th>
+                        <th class="px-2 py-1">Nome</th>
+                        <th class="px-2 py-1">Ramal</th>
+                        <th class="px-2 py-1">Celular</th>
+                        <th class="px-2 py-1">Email</th>
+                        <th class="px-2 py-1">Setor</th>
+                        <th class="px-2 py-1">Ações</th>
                         </tr>
                     </thead>
                     <tbody class="align-top text-sm">
                         @foreach ($dados as $dado )
                             <tr>
-                                <td class="px-5 py-2 border-t">{{$dado->nome}}</td>
-                                <td class="px-5 py-2 border-t">{{$dado->ramal}}</td>
-                                <td class="px-5 py-2 border-t">{{$dado->celular}}</td>
-                                <td class="px-5 py-2 border-t"><a href="mailto:{{$dado->email1}}">{{$dado->email1}}</a>
+                                <td class="px-2 py-1 border-t">{{$dado->nome}}</td>
+                                <td class="px-2 py-1 border-t">{{$dado->ramal}}</td>
+                                <td class="px-2 py-1 border-t">{{$dado->celular}}</td>
+                                <td class="px-2 py-1 border-t"><a href="mailto:{{$dado->email1}}">{{$dado->email1}}</a>
                                     @if($dado->email2)
                                         <br><a href="mailto:{{$dado->email2}}">{{$dado->email2}}</a>
                                     @endif
@@ -50,8 +50,8 @@
                                     @if ($dado->email4)
                                         <br><a href="mailto:{{$dado->email4}}">{{$dado->email4}}</a>
                                     @endif
-                                <td class="px-5 py-2 border-t">{{$dado->setor}}</td>
-                                <td class="px-5 py-2 border-t"><a href="/funcionarios_editar/{{$dado->id}}">Alterar</a> - <a href="/funcionarios_del/{{$dado->id}}">Excluir</a></td>
+                                <td class="px-2 py-1 border-t">{{$dado->setor}}</td>
+                                <td class="px-2 py-1 border-t"><a href="/funcionarios_editar/{{$dado->id}}">Alterar</a> - <a href="/funcionarios_del/{{$dado->id}}">Excluir</a></td>
                             </tr>
                         @endforeach
                        
