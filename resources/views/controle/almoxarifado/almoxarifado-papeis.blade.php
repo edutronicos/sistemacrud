@@ -12,14 +12,13 @@
     <!-- Conteúdo Página-->
     <div class=" w-full bg-gray-300 text-white">
         <div class="m-12">
+        
             <div class="flex flex-row justify-between">
-
-
                 <div class="flex flex-col">
                     <form action="/ctrl_papeis" method="get">
                         <h1 class="w-48 text-gray-700 font-semibold ">Filtrar por: </h1>
                         <select class="w-full p-2 h-8 rounded-lg font-bold text-gray-600 text-xs" name="setor" id="setor">
-                                <option class=" font-medium" value="todos">Setor</option>
+                                <option class=" font-medium" value="">Setor</option>
                                 <option class=" font-medium" value="Arquivo">Arquivo</option>
                                 <option class=" font-medium" value="Financeiro">Financeiro</option>
                                 <option class=" font-medium" value="Informática">Informática</option>
@@ -32,7 +31,7 @@
                                 <option class=" font-medium" value="Telefonista">Telefonista</option>
                             </select>
                             <select class="mt-2 w-full p-2 h-8 rounded-lg font-bold text-gray-600 text-xs" name="mes" id="mes">
-                                <option class=" font-medium" value="ano">Mês</option>
+                                <option class=" font-medium" value="">Mês</option>
                                 <option class=" font-medium" value="1">Janeiro</option>
                                 <option class=" font-medium" value="2">Fevereiro</option>
                                 <option class=" font-medium" value="3">Março</option>
@@ -49,13 +48,6 @@
                              <button class="mt-2 bg-blue-400 w-24 h-8 rounded shadow shadow-white hover:shadow-black" type="submit">Filtrar</button>
                     </form>
                 </div>
-
-                <form action="/funcionarios_index" method="get">
-                    <div class="flex row">
-                        <input class="w-72 rounded-l-lg shadow-lg text-black font-semibold border-gray-100 focus:outline-none focus:ring focus:ring-violet-300" type="text" name="search" id="search" placeholder="Pesquisa">
-                        <button class="bg-gray-400 rounded-r-lg p-3 shadow-xl hover:shadow-slate-200 focus:shadow-none" type="submit"><i class="bi bi-search"></i></button>
-                    </div>
-                </form>
             </div>
 
             <div class="flex justify-center mt-8">
@@ -71,7 +63,7 @@
                         </tr>
                     </thead>
                     <tbody class="align-top text-xs">
-                        @foreach ($saida as $item )
+                        @foreach ($itens as $item )
                             <tr>
                                 <td class="px-5 py-2 border-t">{{$item->setor}}</td>
                                 <td class="px-5 py-2 border-t">{{$item->funcionario}}</td>

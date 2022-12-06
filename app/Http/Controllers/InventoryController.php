@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
 use App\Models\ExitInventory;
+use PhpParser\Node\Stmt\ElseIf_;
 
 class InventoryController extends Controller
 {
@@ -128,19 +129,30 @@ class InventoryController extends Controller
     public function papeis(Request $request)
     {
         $setor = $request->setor;
-        $saida = ExitInventory::where('material', '=' , 'RESMA PAPEL A4')->get();
-        $estoque = Inventory::where('material', '=', 'RESMA PAPEL A4')->get();
-        $total = 0;
+        $mes = $request->mes;
+        //$conta = ExitInventory::where('material', 'RESMA PAPEL A4')->get();     //filtro para fazer a conta de resmas
+        $saida = ExitInventory::query();                                        //cria o filtro que vai ser retornado
+        $saida->where('material', 'RESMA PAPEL A4');                            //deixa fixo só para o material PAPEL A4
 
-        foreach ($saida as $key => $value) {
-            $total += $value->quantidade;
-        }
+            if ($setor) {                                                       //só adiciona o filtro se vir algo do request
+                $saida->where('setor', $setor);
+            }
+            if ($mes) {                                                         //só adiciona o filtro se vir algo do request
+                $saida->whereMonth('created_at', $mes);
+            }
+            
+            $estoque = Inventory::where('material', 'RESMA PAPEL A4')->get();   //pega o valor de quantas resmas tem no estoque
+            $total = 0;                                                         //variavel para fazer a conta
+                                                                    
+            $itens = $saida->paginate();
 
+            foreach ($itens as $key => $value) {                                //um foreach para guardar na variavel total o resultado
+                $total += $value->quantidade;
+            }
 
+            
+            return view('controle.almoxarifado.almoxarifado-papeis', compact('itens', 'estoque', 'total'));
 
-        dd($setor);
-
-        return view('controle.almoxarifado.almoxarifado-papeis', compact('saida', 'estoque', 'total'));
     }
 
 

@@ -28,7 +28,7 @@
                         <label class="font-semibold text-zinc-100" for="">Setor</label>
                     </div>
                     <div class="w-2/3">
-                        <select class="w-full p-2 rounded-lg font-bold text-gray-600" name="setor" id="setor">
+                        <select class="w-full p-1 rounded-lg font-bold text-gray-600" name="setor" id="setor">
                             <option value=""></option>
                             <option value="Financeiro">Financeiro</option>
                             <option value="Informática">Informática</option>
@@ -47,7 +47,7 @@
                         <label class="font-semibold text-zinc-100" for="">Funcionário :</label>
                     </div>
                     <div class="w-2/3">
-                        <input class="w-full rounded-lg font-bold text-gray-600" type="text" name="funcionario" id="funcionario">
+                        <input class="w-full p-1 rounded-lg font-bold text-gray-600" type="text" name="funcionario" id="funcionario">
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                         <label class="font-semibold text-zinc-100" for="">Selecione o Item :</label>
                     </div>
                     <div class="w-2/3">
-                        <select class="w-full p-2 rounded-lg font-bold text-gray-600" name="item" id="item">
+                        <select class="w-full p-1 rounded-lg font-bold text-gray-600" name="item" id="item">
                             <option value=""></option>
                         @foreach ( $itens as $item )
                             <option value="{{$item->id}}">{{$item->material}}</option>
@@ -70,7 +70,7 @@
                         <label class="font-semibold text-zinc-100" for="">Quantidade :</label>
                     </div>
                     <div class="2/3">
-                        <input class="w-full rounded-lg font-bold text-gray-600" type="number" name="quantidade" id="quantidade">
+                        <input class="w-full p-1 rounded-lg font-bold text-gray-600" type="number" name="quantidade" id="quantidade">
                     </div>
                 </div>
 

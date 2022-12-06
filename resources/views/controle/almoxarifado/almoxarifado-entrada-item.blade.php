@@ -24,7 +24,7 @@
                         <label class="font-semibold text-zinc-100" for="">Selecione o Item :</label>
                     </div>
                     <div class="w-2/3">
-                        <select class="w-full p-2 rounded-lg font-bold text-gray-600" name="item" id="item">
+                        <select class="w-full p-1 rounded-lg font-bold text-gray-600" name="item" id="item">
                             <option value=""></option>
                         @foreach ( $itens as $item )
                             <option value="{{$item->id}}">{{$item->material}}</option>
@@ -38,7 +38,7 @@
                             <label class="font-semibold text-zinc-100" for="">Quantidade :</label>
                         </div>
                         <div class="w-2/3">
-                            <input class="rounded-lg font-bold text-gray-600" type="number" name="quantidade" id="quantidade">
+                            <input class="rounded-lg p-1 font-bold text-gray-600" type="number" name="quantidade" id="quantidade">
                         </div>
                     </div>
                     
